@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="header">
+    <p>{{ data.title }}</p>
+    <span
+      [ngClass]="{
+        'status-done': data.taskStatus.statusId === 1,
+        'status-encore': data.taskStatus.statusId === 2,
+        'status-annule': data.taskStatus.statusId === 3
+      }"
+    >
+      {{ data.taskStatus.title }}
+      @if(data.taskStatus.statusId == 1) {
+      <i class="pi pi-check-circle" style="color: white"></i>
+      } @else if(data.taskStatus.statusId == 2) {
+      <i class="pi pi-hourglass" style="color: white"></i>
+      } @else {
+      <i class="pi pi-times" style="color: white"></i>
+
+      }
+    </span>
+  </div>
+  <div class="body">{{data.description}}</div>
+  <div class="footer">
+    <p>{{ data.dueDate }}</p>
+    <button>Edit</button>
+  </div>
+</div>

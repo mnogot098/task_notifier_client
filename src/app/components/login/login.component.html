@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="form-wrapper">
+    <p-floatLabel>
+      <input pInputText id="email" [(ngModel)]="user.email" name="email" />
+      <label for="email">Username</label>
+    </p-floatLabel>
+    <p-floatLabel class="mt-4">
+      <input
+        pInputText
+        id="password"
+        type="password"
+        [(ngModel)]="user.password"
+        name="password"
+      />
+      <label for="password">Password</label>
+    </p-floatLabel>
+    <div class="button-container">
+      <p-button label="Login" (onClick)="onSubmit()"></p-button>
+      <a routerLink="/register">
+        <p-button label="sign up" [link]="true"></p-button>
+      </a>
+    </div>
+  </div>
+</div>

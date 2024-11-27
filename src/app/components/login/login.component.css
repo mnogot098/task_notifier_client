@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.form-wrapper {
+  border: 1px solid rgb(203, 199, 199);
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 300px;
+}

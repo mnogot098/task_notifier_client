@@ -1,0 +1,8 @@
+<div class="flex flex-wrap justify-center">
+   @for(task of tasks; track task.title) {
+     <div class="flex justify-center w-1/2 p-2">
+       <app-task [data]="task"></app-task>
+     </div>
+   }
+ </div>
+ 

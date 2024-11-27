@@ -1,0 +1,27 @@
+<div class="container">
+   <div class="form-wrapper">
+     <p-floatLabel>
+       <input pInputText id="username" [(ngModel)]="user.username" name="username"/>
+       <label for="username">Username</label>
+     </p-floatLabel>
+     <p-floatLabel class="mt-4">
+       <input pInputText id="password" type="password" [(ngModel)]="user.password" name="password"/>
+       <label for="password">Password</label>
+     </p-floatLabel>
+     <p-floatLabel class="mt-4">
+       <input pInputText id="phone_number" [(ngModel)]="user.phone_number" name="phone_number"/>
+       <label for="phone_number">Phone number</label>
+     </p-floatLabel>
+     <p-floatLabel class="mt-4">
+       <input pInputText id="email" type="email" [(ngModel)]="user.email" name="email"/>
+       <label for="emailEmail">Email</label>
+     </p-floatLabel>
+     <div class="button-container">
+       <p-button label="Regsiter" (onClick)="register()"></p-button>
+       <a routerLink="/login">
+         <p-button label="login" [link]="true"></p-button>
+       </a>
+     </div>
+   </div>
+ </div>
+ 
