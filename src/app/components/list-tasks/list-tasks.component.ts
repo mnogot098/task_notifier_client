@@ -7,24 +7,32 @@ import { TaskService } from '../../services/task.service';
   standalone: true,
   imports: [TaskComponent],
   templateUrl: './list-tasks.component.html',
-  styleUrl: './list-tasks.component.css'
+  styleUrl: './list-tasks.component.css',
 })
-export class ListTasksComponent implements OnInit{
+export class ListTasksComponent implements OnInit {
+  tasks: any[] = [];
+  user: any = null;
 
-  tasks:any[]= [];
+  constructor(private taskService: TaskService) {}
 
-  constructor(private taskService:TaskService) {}
- 
   async ngOnInit() {
-    this.getAllTasks();
+    const storedUser = window.localStorage.getItem('user');
+
+    if (storedUser) {
+      this.user = JSON.parse(storedUser);
+
+      this.getTasksByUser();
+    }
   }
 
-
-  getAllTasks() {
-    this.taskService.getAllTasks().subscribe((res) => {
-      this.tasks = res.tasks;
-    },
-  (err) => {
-  })
+  getTasksByUser() {
+    this.taskService.getTasksByUser(this.user.userId).subscribe(
+      (res) => {
+        this.tasks = res.tasks;
+      },
+      (err) => {
+        
+      }
+    );
   }
 }

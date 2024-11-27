@@ -7,6 +7,7 @@ import { Auth } from '../../models/Auth';
 import { AuthService } from '../../services/auth.service';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,12 +19,20 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent {
   user: Auth = new Auth();
 
-  constructor(private authService: AuthService, private notifier: ToastrService) {}
+  constructor(
+    private authService: AuthService,
+    private notifier: ToastrService,
+    private router: Router
+  ) {}
 
   onSubmit(): void {
     this.authService.login(this.user).subscribe(
       (res) => {
-        this.notifier.success(res.message);
+        this.authService.setAuthToken(res.user);
+        
+        this.authService.updateLoggedInStatus(true);
+        
+        this.router.navigate(['/tasks']);
       },
       (err) => {
         this.notifier.error(err.error.message);

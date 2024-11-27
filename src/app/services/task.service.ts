@@ -1,18 +1,20 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_ENDPOINTS } from '../constants';
 import { environment } from '../../environments/environment';
+import { API_ENDPOINTS } from '../constants';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  constructor(private http: HttpClient) {
+  constructor(private authService: AuthService) {}
 
-  }
-
-  getAllTasks(): Observable<any> {
-    return this.http.get<any>(environment.ApiUrl+API_ENDPOINTS.LIST_TASKS);
+  getTasksByUser(userId: number): Observable<any> {
+    return this.authService.intercept(
+      'post',
+      environment.ApiUrl + API_ENDPOINTS.LIST_TASKS,
+      { userId }
+    );
   }
 }

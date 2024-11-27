@@ -1,11 +1,6 @@
+@if(isLoggedIn){
 <p-toolbar>
   <div class="p-toolbar-group-start left-items">
-    <p-autoComplete
-      [(ngModel)]="selectedItem"
-      (completeMethod)="(search)"
-      [disabled]="false"
-      placeholder="Search...."
-    />
     <p-button
       [style]="{ 'margin-left': '15px' }"
       label="My tasks"
@@ -17,23 +12,26 @@
   </div>
   <div class="p-toolbar-group-end right-items">
     <p-button
-      label="Notifications"
-      badge="8"
+      label="{{ username }}"
+      icon="pi pi-user"
       [style]="{
-        'background-color': '#d9079d',
-        color: '#ffff',
+        'background-color': 'orange',
+        border: 'none'
+      }"
+    />
+    <p-button
+      label="Log out"
+      icon="pi pi-sign-out"
+      [style]="{
+        'background-color': 'gray',
+        color: '',
         border: '1px solid #d9079d',
         'margin-right': '10px',
         'margin-left': '10px'
       }"
+      (onClick)="logout()"
     />
-    <p-avatar
-      icon="pi pi-user"
-      styleClass="mr-2"
-      size="large"
-      [style]="{ 'background-color': '#d9079d', color: '#ffff' }"
-    ></p-avatar>
   </div>
 </p-toolbar>
-
+}
 <router-outlet></router-outlet>
