@@ -1,13 +1,25 @@
-class Task {
-  task_id: number;
+export class Task {
+  taskId: number;
+  title: string;
   description: string;
-  due_date: Date;
-  status: boolean;
+  due_date: Date | null;
+  taskStatus: number;
+  userId: number;
+
+  notificationMessage: string;
+  //scheduledTime: Date | null;
+  channelId: number;
 
   constructor() {
-    this.task_id = 0;
+    this.taskId = 0;
+    this.title = '';
     this.description = '';
-    this.due_date = new Date();
-    this.status = false;
+    this.due_date = null;
+    this.taskStatus = 0;
+    this.userId = 0;
+
+    this.notificationMessage = '';
+    //this.scheduledTime = null;
+    this.channelId = 0;
   }
 }

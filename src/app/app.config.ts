@@ -4,7 +4,7 @@ import { provideToastr } from 'ngx-toastr';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { tokenInterceptorFn } from './interceptors/TokenInterceptor ';
 
 export const appConfig: ApplicationConfig = {
@@ -16,5 +16,6 @@ export const appConfig: ApplicationConfig = {
     ),
     provideToastr(),
     DatePipe,
+    CommonModule
   ],
 };

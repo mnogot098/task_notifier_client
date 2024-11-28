@@ -1,1 +1,31 @@
-<p>add-task works!</p>
+<div class="container">
+  <div class="form-wrapper">
+    <p-floatLabel>
+      <input pInputText id="title" [(ngModel)]="task.title" name="title" />
+      <label for="title">Task title</label>
+    </p-floatLabel>
+    <p-floatLabel>
+      <textarea
+        id="description"
+        rows="5"
+        cols="22"
+        pInputTextarea
+        [(ngModel)]="task.description"
+      ></textarea>
+      <label for="title">Task title</label>
+    </p-floatLabel>
+    <p-floatLabel>
+      <p-calendar
+        id="due_date"
+        [(ngModel)]="task.due_date"
+        [showIcon]="false"
+        [showTime]="true"
+        [hourFormat]="'24'"
+      ></p-calendar>
+      <label for="due_date">Due Date and Time</label>
+    </p-floatLabel>
+    <div class="button-container">
+      <p-button label="Regsiter" (onClick)="create()"></p-button>
+    </div>
+  </div>
+</div>

@@ -2,12 +2,13 @@
 <p-toolbar>
   <div class="p-toolbar-group-start left-items">
     <p-button
-      [style]="{ 'margin-left': '15px' }"
+      [style]="{ 'margin-left': '15px','color':'white' }"
       label="My tasks"
       [raised]="true"
       [rounded]="true"
       severity="warning"
       icon="pi pi-check"
+      (onClick)="showTasks()"
     />
     <p-button
       [style]="{ 'margin-left': '15px' }"

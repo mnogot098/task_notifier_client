@@ -66,6 +66,10 @@ export class AppComponent implements OnInit {
   }
 
   showAddForm() {
-    this.router.navigate(['/tasks/add'])
+    this.router.navigate(['/tasks/add']);
+  }
+
+  showTasks() {
+    this.router.navigate(['/tasks']);
   }
 }
