@@ -64,4 +64,8 @@ export class AppComponent implements OnInit {
     this.authService.updateLoggedInStatus(false);
     this.router.navigate(['/login']);
   }
+
+  showAddForm() {
+    this.router.navigate(['/tasks/add'])
+  }
 }

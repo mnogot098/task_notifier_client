@@ -9,6 +9,15 @@
       severity="warning"
       icon="pi pi-check"
     />
+    <p-button
+      [style]="{ 'margin-left': '15px' }"
+      label="Create task"
+      [raised]="true"
+      [rounded]="true"
+      severity="success"
+      icon="pi pi-plus"
+      (onClick)="showAddForm()"
+    />
   </div>
   <div class="p-toolbar-group-end right-items">
     <p-button

@@ -17,4 +17,11 @@ export class TaskService {
       { userId }
     );
   }
+
+  getTaskStatus():Observable<any> {
+    return this.authService.intercept(
+      'get',
+      environment.ApiUrl + API_ENDPOINTS.TASK_STATUS, null
+    )
+  }
 }
