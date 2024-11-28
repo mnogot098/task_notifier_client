@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { API_ENDPOINTS } from '../constants';
 import { User } from '../models/User';
+import { jwtDecode } from "jwt-decode";
+
 
 @Injectable({
   providedIn: 'root',
@@ -48,6 +50,18 @@ export class AuthService {
       window.localStorage.removeItem('user');
       window.localStorage.removeItem('token');
       this.updateLoggedInStatus(false);
+    }
+  }
+
+  isTokenExpired(token: string): boolean {
+    alert('called expiration ')
+    try {
+      const decoded: any = jwtDecode(token);
+      const now = Math.floor(new Date().getTime() / 1000);
+      return decoded.exp < now;
+    } catch (error) {
+      console.error('Error decoding token', error);
+      return true;
     }
   }
 
