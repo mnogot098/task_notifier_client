@@ -1,31 +1,85 @@
-<div class="container">
-  <div class="form-wrapper">
-    <p-floatLabel>
-      <input pInputText id="title" [(ngModel)]="task.title" name="title" />
-      <label for="title">Task title</label>
-    </p-floatLabel>
-    <p-floatLabel>
-      <textarea
-        id="description"
-        rows="5"
-        cols="22"
-        pInputTextarea
-        [(ngModel)]="task.description"
-      ></textarea>
-      <label for="title">Task title</label>
-    </p-floatLabel>
-    <p-floatLabel>
-      <p-calendar
-        id="due_date"
-        [(ngModel)]="task.due_date"
-        [showIcon]="false"
-        [showTime]="true"
-        [hourFormat]="'24'"
-      ></p-calendar>
-      <label for="due_date">Due Date and Time</label>
-    </p-floatLabel>
-    <div class="button-container">
-      <p-button label="Regsiter" (onClick)="create()"></p-button>
-    </div>
+<div class="container mt-5">
+  <div class="form-wrapper mx-auto p-4 border rounded" style="max-width: 600px">
+    <form [formGroup]="taskForm" (ngSubmit)="create()">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="title" class="form-label">Task Title</label>
+          <input
+            type="text"
+            id="title"
+            class="form-control"
+            formControlName="title"
+            placeholder="Enter task title"
+          />
+          @if(taskForm.controls?.['title']?.touched &&
+          taskForm.controls?.['title']?.errors?.['required']) {
+          <span class="text-danger">Title is required.</span>
+          }
+        </div>
+        <div class="col-md-6">
+          <label for="due_date" class="form-label">Schedule Time</label>
+          <input
+            type="datetime-local"
+            id="due_date"
+            class="form-control"
+            formControlName="due_date"
+            placeholder="Enter schedule time"
+          />
+          @if(taskForm.controls?.['due_date']?.touched &&
+          taskForm.controls?.['due_date']?.errors?.['required']) {
+          <span class="text-danger">Schedule time is required.</span>
+          }
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="description" class="form-label">Task Description</label>
+        <textarea
+          id="description"
+          rows="4"
+          class="form-control"
+          formControlName="description"
+          placeholder="Enter task description"
+        ></textarea>
+      </div>
+      <div class="row">
+        <label for="notification_message" class="form-label"
+          >Notification Message</label
+        >
+        <textarea
+          id="notification_message"
+          rows="3"
+          class="form-control"
+          formControlName="message"
+          placeholder="Enter notification message"
+        ></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Notification Channel</label>
+        <div class="d-flex flex-wrap">
+          @for(channel of channels; track $index) {
+          <div class="form-check me-3 d-flex align-items-center">
+            <input
+              class="form-check-input"
+              type="radio"
+              [value]="channel.channelId"
+              formControlName="channel_id"
+              [id]="'channel_' + $index"
+            />
+            <label class="form-check-label" [for]="'channel_' + $index">
+              <i class="{{ channel.channel_icon }}"></i>
+              {{ channel.name }}
+            </label>
+          </div>
+          }
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-warning w-100 text-white">
+          Save
+        </button>
+      </div>
+    </form>
   </div>
 </div>

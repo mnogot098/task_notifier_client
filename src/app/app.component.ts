@@ -5,7 +5,6 @@ import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
-import { DropdownModule } from 'primeng/dropdown';
 import { SidebarModule } from 'primeng/sidebar';
 import { ToolbarModule } from 'primeng/toolbar';
 import { AuthService } from './services/auth.service';
@@ -22,7 +21,6 @@ import { AuthService } from './services/auth.service';
     ButtonModule,
     SidebarModule,
     CalendarModule,
-    DropdownModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

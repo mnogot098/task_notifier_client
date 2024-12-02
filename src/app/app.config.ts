@@ -6,6 +6,9 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { CommonModule, DatePipe } from '@angular/common';
 import { tokenInterceptorFn } from './interceptors/TokenInterceptor ';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,6 +19,8 @@ export const appConfig: ApplicationConfig = {
     ),
     provideToastr(),
     DatePipe,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule
   ],
 };
